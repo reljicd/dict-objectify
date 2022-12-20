@@ -57,13 +57,17 @@ class FieldBase(object):
                            f'Attempted to set a None-equivalent value. '
                            f'[Value: {value}]')
                 LOGGER.warning(message)
-                # raise ValueError(message)
+                raise ValueError(message)
 
             if self.tag in data_dict:
                 del data_dict[self.tag]
         else:
             data_dict[self.tag] = value
 
+        # Given that we access the data_dict directly when putting documents
+        #  into Mongo, the only way to ensure we don't set invalid values is to
+        #  immediately retrieve them to make sure they go through the _map
+        #  method.
         instance.__getattribute__(self._name)
 
     def _map(self, element: Any) -> Any:
