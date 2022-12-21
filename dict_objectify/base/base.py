@@ -3,7 +3,7 @@ from typing import Any, Dict, List, Tuple
 
 from dict_objectify.base.constants import NONE_EQUIVALENT_VALUES
 from dict_objectify.base.field_base import FieldBase
-from dict_objectify.hash import dict_base_hash
+from dict_objectify.base.hash import dict_base_hash
 
 
 class BaseMeta(type):
