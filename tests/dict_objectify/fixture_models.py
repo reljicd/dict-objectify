@@ -36,5 +36,3 @@ class TestModel(Base):
     nested_array_field_nullable = Array(NestedTestModel)
     enum_field_nullable = EnumField(['a', 'b', 'c'])
     nested_field_nullable = NestedTestModel()
-
-    enum_field_nullable_not_strict = EnumField(['a', 'b', 'c'], strict=False)

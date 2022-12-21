@@ -79,7 +79,7 @@ alt_example_obj = RootModel(integer_field=5, text_field='lorem ipsum')
 * **Text**
 * **Bool**
 * **Datetime** (**datetime_format**: Specification of datetime format)
-* **EnumField** (**enumeration**: A list of allowed (if strict) or expected (if not strict) values. 
+* **EnumField** (**enumeration**: A list of allowed values. 
 **strict**: If True, no other values will be allowed. If False, values not in enumeration will only raise a warning.)
 * **Array** (**model**: Type of elements. Could be builtin python type or one of the Base types)
 
