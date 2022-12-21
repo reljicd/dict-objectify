@@ -34,12 +34,12 @@ class FieldBase(object):
                 data_dict_value = (instance.data_dict[self.tag]
                                    if self.tag in instance.data_dict
                                    else '[[No value in the data dictionary]]')
-                message = (f'[Field: {self.tag}] '
-                           f'in a class of type [Type: {type(instance)}] '
-                           f'is is not nullable. '
-                           f'Found a None-equivalent value. '
-                           f'[Raw value: {data_dict_value}]')
-                LOGGER.warning(message)
+
+                LOGGER.warning(f'[Field: {self.tag}] '
+                               f'in a class of type [Type: {type(instance)}] '
+                               f'is not nullable. '
+                               f'Found a None-equivalent value. '
+                               f'[Raw value: {data_dict_value}]')
 
             return None
         else:
@@ -53,7 +53,7 @@ class FieldBase(object):
             if not self.nullable:
                 message = (f'[Field: {self.tag}] '
                            f'in a class of type [Type: {type(instance)}] '
-                           f'is is not nullable. '
+                           f'is not nullable. '
                            f'Attempted to set a None-equivalent value. '
                            f'[Value: {value}]')
                 LOGGER.warning(message)
@@ -63,12 +63,6 @@ class FieldBase(object):
                 del data_dict[self.tag]
         else:
             data_dict[self.tag] = value
-
-        # Given that we access the data_dict directly when putting documents
-        #  into Mongo, the only way to ensure we don't set invalid values is to
-        #  immediately retrieve them to make sure they go through the _map
-        #  method.
-        instance.__getattribute__(self._name)
 
     def _map(self, element: Any) -> Any:
         return self._process(element)
