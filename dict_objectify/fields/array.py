@@ -1,11 +1,11 @@
-from datetime import datetime
 from typing import Generic, Iterable, List, Type, TypeVar
 
 from str2bool import str2bool
 
-from dict_objectify.base import Base
-from dict_objectify.constants import NONE_EQUIVALENT_VALUES
-from dict_objectify.fields.field_base import FieldBase
+from dict_objectify.base.base import Base
+from dict_objectify.base.constants import NONE_EQUIVALENT_VALUES
+from dict_objectify.base.field_base import FieldBase
+from dict_objectify.fields.date import datetime
 
 T = TypeVar('T', str, bool, int, float, datetime, FieldBase)
 

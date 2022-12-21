@@ -2,8 +2,8 @@ from typing import Any
 
 import pytest
 
-from dict_objectify.base import Base
-from dict_objectify.constants import NONE_EQUIVALENT_VALUES
+from dict_objectify.base.base import Base
+from dict_objectify.base.constants import NONE_EQUIVALENT_VALUES
 from dict_objectify.hash import __int_hash, dict_base_hash
 
 RESEARCHER_DICT_VER_1 = {'first_name': 'Test',

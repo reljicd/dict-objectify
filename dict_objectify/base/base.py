@@ -1,8 +1,8 @@
 from datetime import datetime
 from typing import Any, Dict, List, Tuple
 
-from dict_objectify.constants import NONE_EQUIVALENT_VALUES
-from dict_objectify.fields.field_base import FieldBase
+from dict_objectify.base.constants import NONE_EQUIVALENT_VALUES
+from dict_objectify.base.field_base import FieldBase
 from dict_objectify.hash import dict_base_hash
 
 

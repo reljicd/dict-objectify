@@ -1,7 +1,7 @@
 from datetime import datetime
 from typing import Any, Dict, List, Optional, Set
 
-from dict_objectify.constants import NONE_EQUIVALENT_VALUES
+from dict_objectify.base.constants import NONE_EQUIVALENT_VALUES
 from dict_objectify.utils.logger import get_logger
 
 LOGGER = get_logger(__name__)

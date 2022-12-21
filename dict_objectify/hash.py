@@ -2,7 +2,7 @@ import hashlib
 from collections.abc import Iterable
 from typing import Any
 
-from dict_objectify.constants import NONE_EQUIVALENT_VALUES
+from dict_objectify.base.constants import NONE_EQUIVALENT_VALUES
 
 
 def dict_base_hash(value: Any) -> int:

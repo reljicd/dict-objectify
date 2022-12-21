@@ -1,7 +1,7 @@
 from typing import Any, List, Optional
 
-from dict_objectify.constants import NONE_EQUIVALENT_VALUES
-from dict_objectify.fields.field_base import FieldBase
+from dict_objectify.base.constants import NONE_EQUIVALENT_VALUES
+from dict_objectify.base.field_base import FieldBase
 from dict_objectify.utils.logger import get_logger
 
 LOGGER = get_logger(__name__)
