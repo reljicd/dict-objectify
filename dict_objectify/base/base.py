@@ -34,7 +34,6 @@ class Base(FieldBase, metaclass=BaseMeta):
         super().__init__(tag=tag, primary=primary, nullable=nullable)
 
     def __eq__(self, other):
-        """Overrides the default implementation"""
         if isinstance(other, self.__class__):
             if self._hash_fields or hasattr(self, '_id'):
                 return self.__hash__() == other.__hash__()

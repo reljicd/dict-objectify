@@ -1,4 +1,4 @@
-from typing import Generic, Iterable, List, Type, TypeVar
+from typing import Any, Generic, Iterable, List, Optional, Type, TypeVar
 
 from str2bool import str2bool
 
@@ -25,7 +25,7 @@ class Array(FieldBase, Generic[T]):
                              f'The type that was specified is {model}.')
         self.model = model
 
-    def __get__(self, instance, owner) -> List[T]:
+    def __get__(self, instance, owner) -> Optional[Any]:
         """ When the array is empty, None, or not present, it should be
             returned as an empty array. """
         if instance is not None:
