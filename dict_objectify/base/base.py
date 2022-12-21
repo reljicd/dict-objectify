@@ -35,10 +35,7 @@ class Base(FieldBase, metaclass=BaseMeta):
 
     def __eq__(self, other):
         if isinstance(other, self.__class__):
-            if self._hash_fields or hasattr(self, '_id'):
-                return self.__hash__() == other.__hash__()
-            else:
-                return self.data_dict == other.data_dict
+            return self.__hash__() == other.__hash__()
         return False
 
     def __hash__(self):
@@ -49,8 +46,8 @@ class Base(FieldBase, metaclass=BaseMeta):
             return dict_base_hash(self.data_dict)
 
     def __set__(self, instance, value):
-        if hasattr(value, 'to_dict'):
-            value = value.to_dict()
+        if hasattr(value, 'data_dict'):
+            value = value.data_dict
         elif (not isinstance(value, dict)
               and value not in NONE_EQUIVALENT_VALUES):
             raise ValueError(f'Tried to set a value [Value: {value}] '

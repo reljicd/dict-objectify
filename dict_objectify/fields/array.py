@@ -37,24 +37,24 @@ class Array(FieldBase, Generic[T]):
     def __set__(self, instance, value: List[T]) -> None:
         """ When a new value is empty or None the tag in the dictionary should
             not be present at all. """
-        if value not in NONE_EQUIVALENT_VALUES:
-            if not isinstance(value, Iterable) or isinstance(value,
-                                                             (dict, str)):
+        if value in NONE_EQUIVALENT_VALUES:
+            processed_value = value
+        else:
+            if isinstance(value, (dict, str)) or not isinstance(
+                    value, Iterable):
                 # Most iterables should work,
                 # but not a dictionary or string.
                 raise ValueError(
                     f'Tried to set Array tag [Tag: {self.tag}] with '
-                    f'a value [Value: {value}] of unsupported type '
-                    f'[Type: {type(value)}].')
+                    f'a value [Value: {value}] of unsupported '
+                    f'[type: {type(value)}].')
 
             processed_value = [v for v in value
                                if v not in NONE_EQUIVALENT_VALUES]
 
-            if hasattr(self.model, 'to_dict'):
-                processed_value = [element.to_dict()
+            if issubclass(self.model, Base):
+                processed_value = [element.data_dict
                                    for element in processed_value]
-        else:
-            processed_value = value
 
         super().__set__(instance, processed_value)
 
