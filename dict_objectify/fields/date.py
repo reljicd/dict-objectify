@@ -2,9 +2,6 @@ from datetime import datetime
 from typing import Optional, Union
 
 from dict_objectify.base.field_base import FieldBase
-from dict_objectify.utils.logger import get_logger
-
-LOGGER = get_logger(__name__)
 
 DEFAULT_FORMAT = '%Y-%m-%dT%H:%M:%SZ'
 
