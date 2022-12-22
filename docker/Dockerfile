@@ -6,9 +6,9 @@ ENV PYTHONPATH ${PYTHONPATH}:${APP_HOME}:${TESTS_PATH}
 
 WORKDIR ${APP_HOME}
 
-COPY ./dict_objectify/requirements.txt .
+COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY ./dict-objectify ${APP_HOME}
+COPY . ${APP_HOME}
 
 ENTRYPOINT ["python"]

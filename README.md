@@ -123,7 +123,7 @@ $ pip install -r requirements.txt
 ### Default
 Running tests:
 ```bash
-$ python -m pytest /tests
+$ python -m pytest tests
 ```
 
 ### Docker
@@ -137,7 +137,7 @@ $ docker build -t reljicd/dict-objectify -f docker/Dockerfile .
 
 Run the Docker container:
 ```bash
-$ docker run --rm reljicd/dict-objectify -m pytest /tests
+$ docker run --rm reljicd/dict-objectify -m pytest tests
 ```
 
 ### Docker helper script
@@ -146,5 +146,5 @@ It is possible to run all of the above with helper script:
 
 ```bash
 $> chmod +x scripts/run_docker.sh
-$> scripts/run_docker.sh -m pytest /tests
+$> scripts/run_docker.sh -m pytest tests
 ```
