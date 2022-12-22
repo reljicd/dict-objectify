@@ -5,7 +5,6 @@ import pytest
 from dict_objectify.base.base import Base
 from dict_objectify.base.constants import NONE_EQUIVALENT_VALUES
 from dict_objectify.base.hash import __int_hash, dict_base_hash
-from dict_objectify.fixture_models import NestedTestModel
 
 RESEARCHER_DICT_VER_1 = {'first_name': 'Test',
                          'identifiers': [
@@ -105,16 +104,6 @@ def test_nested():
                     {'aa': 7, 'ab': [1, 2, 3]}]}
     dict_2 = {'a': [{'aa': 7, 'ab': [1, 2, 3]},
                     {'aa': 5, 'ab': [5, 6, {'aaa': [6, 5, 4]}]}]}
-    assert dict_base_hash(dict_1) == dict_base_hash(dict_2)
-
-
-def test_nested_obj():
-    dict_1 = {'a': [{'aa': 5, 'ab': [5, 6, {
-        'aaa': NestedTestModel(text_field='Something')}]},
-                    {'aa': 7, 'ab': [1, 2, 3]}]}
-    dict_2 = {'a': [{'aa': 7, 'ab': [1, 2, 3]},
-                    {'aa': 5, 'ab': [5, 6, {
-                        'aaa': NestedTestModel(text_field='Something')}]}]}
     assert dict_base_hash(dict_1) == dict_base_hash(dict_2)
 
 

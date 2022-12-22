@@ -18,8 +18,6 @@ def dict_base_hash(value: Any) -> int:
                     if v not in NONE_EQUIVALENT_VALUES])
     elif isinstance(value, Iterable):
         return sum([dict_base_hash(_value) for _value in value])
-    elif hasattr(value, 'data_dict'):
-        return hash(value)
     else:
         raise AttributeError(f'Hashing function received unsupported '
                              f'[Value: {value}] of [Type: {type(value)}].')
