@@ -2,9 +2,6 @@ from datetime import datetime
 from typing import Any, Dict, List, Optional, Set
 
 from dict_objectify.base.constants import NONE_EQUIVALENT_VALUES
-from dict_objectify.utils.logger import get_logger
-
-LOGGER = get_logger(__name__)
 
 
 class FieldBase(object):
@@ -24,43 +21,24 @@ class FieldBase(object):
 
     def __get__(self, instance, owner) -> Optional[Any]:
         if instance is not None:
-            element = instance.data_dict.get(self.tag)
+            try:
+                element = instance.data_dict[self.tag]
+            except KeyError:
+                raise AttributeError(f'Missing dict key for [{self.tag}]')
             if element not in NONE_EQUIVALENT_VALUES:
-                result = self._map(element)
-                if result not in NONE_EQUIVALENT_VALUES:
-                    return result
-
-            if not self.nullable:
-                data_dict_value = (instance.data_dict[self.tag]
-                                   if self.tag in instance.data_dict
-                                   else '[[No value in the data dictionary]]')
-
-                LOGGER.warning(f'[Field: {self.tag}] '
-                               f'in a class of type [Type: {type(instance)}] '
-                               f'is not nullable. '
-                               f'Found a None-equivalent value. '
-                               f'[Raw value: {data_dict_value}]')
-
-            return None
+                element = self._map(element)
+            return element
         else:
             return self
 
     def __set__(self, instance, value):
-        """ When a new value is empty or None the tag in the dictionary should
-            not be present at all. """
         data_dict = instance.data_dict
-        if value in NONE_EQUIVALENT_VALUES:
-            if not self.nullable:
-                message = (f'[Field: {self.tag}] '
-                           f'in a class of type [Type: {type(instance)}] '
-                           f'is not nullable. '
-                           f'Attempted to set a None-equivalent value. '
-                           f'[Value: {value}]')
-                LOGGER.warning(message)
-                raise ValueError(message)
-
-            if self.tag in data_dict:
-                del data_dict[self.tag]
+        if value in NONE_EQUIVALENT_VALUES and not self.nullable:
+            raise ValueError(f'[Field: {self.tag}] '
+                             f'in a class of type [Type: {type(instance)}] '
+                             f'is not nullable. '
+                             f'Attempted to set a None-equivalent value. '
+                             f'[Value: {value}]')
         else:
             data_dict[self.tag] = value
 
