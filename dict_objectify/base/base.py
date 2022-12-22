@@ -46,10 +46,9 @@ class Base(FieldBase, metaclass=BaseMeta):
             return dict_base_hash(self.data_dict)
 
     def __set__(self, instance, value):
-        if hasattr(value, 'data_dict'):
+        if issubclass(type(value), self.__class__):
             value = value.data_dict
-        elif (not isinstance(value, dict)
-              and value not in NONE_EQUIVALENT_VALUES):
+        elif value not in NONE_EQUIVALENT_VALUES:
             raise ValueError(f'Tried to set a value [Value: {value}] '
                              f'of an unsupported type [Type: {type(value)}] '
                              f'on an object with tag [Tag: {self.tag}].')
