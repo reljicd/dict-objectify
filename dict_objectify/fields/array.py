@@ -1,4 +1,4 @@
-from typing import Any, Generic, Iterable, List, Optional, Type, TypeVar
+from typing import Generic, Iterable, List, Type, TypeVar
 
 from str2bool import str2bool
 
@@ -25,18 +25,7 @@ class Array(FieldBase, Generic[T]):
                              f'The type that was specified is {model}.')
         self.model = model
 
-    def __get__(self, instance, owner) -> Optional[Any]:
-        """ When the array is empty, None, or not present, it should be
-            returned as an empty array. """
-        if instance is not None:
-            result = super().__get__(instance, owner)
-            return result if result not in NONE_EQUIVALENT_VALUES else []
-        else:
-            return self
-
     def __set__(self, instance, value: List[T]) -> None:
-        """ When a new value is empty or None the tag in the dictionary should
-            not be present at all. """
         if value in NONE_EQUIVALENT_VALUES:
             processed_value = value
         else:
