@@ -10,14 +10,20 @@ DATETIME_LEGAL = [datetime(2000, 1, 1, 0, 0, 0, 0),
                   '2020-01-01T00:00:00Z']
 
 
-@pytest.mark.parametrize('legal_value', DATETIME_LEGAL)
-def test_datetime_field_with_legal_values(legal_value):
-    model = TestModel()
+@pytest.fixture()
+def model():
+    return TestModel()
 
+
+@pytest.mark.parametrize('legal_value', DATETIME_LEGAL)
+def test_datetime_field_with_legal_values(model, legal_value):
     model.datetime_field = legal_value
     if isinstance(legal_value, datetime):
         assert model.datetime_field == legal_value
 
+
+@pytest.mark.parametrize('legal_value', DATETIME_LEGAL)
+def test_nullable_datetime_field_with_legal_values(model, legal_value):
     model.datetime_field_nullable = legal_value
     if isinstance(legal_value, datetime):
         assert model.datetime_field_nullable == legal_value
