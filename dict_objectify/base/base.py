@@ -41,7 +41,8 @@ class Base(FieldBase, metaclass=BaseMeta):
     def __hash__(self):
         if self._hash_fields:
             return sum(self.__getattribute__(primary_attr).__hash__()
-                       for primary_attr in self._hash_fields)
+                       for primary_attr in self._hash_fields
+                       if hasattr(self, primary_attr))
         else:
             return dict_base_hash(self.data_dict)
 
@@ -94,3 +95,7 @@ class Base(FieldBase, metaclass=BaseMeta):
 
     def __bool__(self):
         return bool(self.data_dict)
+
+
+class MixinBase(object, metaclass=BaseMeta):
+    pass
