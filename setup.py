@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from setuptools import setup
+from setuptools import find_packages, setup
 
 LONG_DESCRIPTION = """
 Dict Objectify (DO) allows specification of python classes hierarchy that are 
@@ -54,6 +54,9 @@ setup(
     author='Dusan Reljic',
     author_email='reljicd@google.com',
     license='Apache Software License',
+
+    packages=find_packages('.', exclude=['docker', 'scripts',
+                                         'tests', 'tests.*']),
 
     classifiers=[
         'Development Status :: 4 - Beta',
