@@ -160,3 +160,4 @@ venv.bak/
 *.iml
 
 *.sqlite3
+.pytest_cache
