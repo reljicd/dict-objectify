@@ -1,6 +1,6 @@
 import pytest
 
-from dict_objectify.fixture_models import TestModel
+from tests.dict_objectify.fixture_models import TestModel
 
 INTEGER_LEGAL = [-2 ** 65, -100, -1, 0, 1, 100, 2 ** 65]
 

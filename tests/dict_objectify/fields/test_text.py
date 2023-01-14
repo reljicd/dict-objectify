@@ -1,8 +1,8 @@
 import pytest
 
-from dict_objectify.fields.test_float import FLOAT_LEGAL
-from dict_objectify.fields.test_integer import INTEGER_LEGAL
-from dict_objectify.fixture_models import TestModel
+from tests.dict_objectify.fields.test_float import FLOAT_LEGAL
+from tests.dict_objectify.fields.test_integer import INTEGER_LEGAL
+from tests.dict_objectify.fixture_models import TestModel
 
 TEXT_LEGAL = ['', 'a', 'Some value']
 

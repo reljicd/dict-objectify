@@ -2,8 +2,8 @@ import math
 
 import pytest
 
-from dict_objectify.fields.test_integer import INTEGER_LEGAL
-from dict_objectify.fixture_models import TestModel
+from tests.dict_objectify.fields.test_integer import INTEGER_LEGAL
+from tests.dict_objectify.fixture_models import TestModel
 
 FLOAT_LEGAL = [-math.inf, -float('inf'), -2. ** 65, -100., -1.,
                0.,

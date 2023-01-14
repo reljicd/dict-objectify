@@ -2,7 +2,7 @@ from datetime import datetime
 
 import pytest
 
-from dict_objectify.fixture_models import NestedTestModel, TestModel
+from tests.dict_objectify.fixture_models import NestedTestModel, TestModel
 
 LEGAL_STRING_VALUES = [
     ['Hello'],

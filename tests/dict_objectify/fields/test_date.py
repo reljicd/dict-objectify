@@ -2,7 +2,7 @@ from datetime import datetime
 
 import pytest
 
-from dict_objectify.fixture_models import TestModel
+from tests.dict_objectify.fixture_models import TestModel
 
 DATETIME_LEGAL = [datetime(2000, 1, 1, 0, 0, 0, 0),
                   datetime(1, 1, 1),

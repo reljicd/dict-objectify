@@ -1,7 +1,7 @@
 import pytest
 
 from dict_objectify.base.constants import NONE_EQUIVALENT_VALUES
-from dict_objectify.fixture_models import TestModel
+from tests.dict_objectify.fixture_models import TestModel
 
 _STANDARD_TYPES_VALUES = [
     'Hello', 0, 1, True, {'A'}, {'a': 1}, [0], False

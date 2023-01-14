@@ -1,7 +1,7 @@
 import pytest
 from str2bool import str2bool
 
-from dict_objectify.fixture_models import TestModel
+from tests.dict_objectify.fixture_models import TestModel
 
 BOOL_LEGAL = ['True', 'False', True, False]
 

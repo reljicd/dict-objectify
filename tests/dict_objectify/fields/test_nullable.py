@@ -1,7 +1,7 @@
 import pytest
 
 from dict_objectify.base.hash import NONE_EQUIVALENT_VALUES
-from dict_objectify.fixture_models import TestModel
+from tests.dict_objectify.fixture_models import TestModel
 
 
 @pytest.fixture()
