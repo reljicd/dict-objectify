@@ -3,7 +3,7 @@ from dict_objectify.base import (Base, FieldBase, MixinBase,
 from dict_objectify.fields import (Array, Bool, Datetime, EnumField, Float,
                                    Integer, Text)
 
-__version__ = '0.0.1'
+__version__ = '0.0.2'
 __all__ = [
     Base,
     MixinBase,
