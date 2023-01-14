@@ -1,4 +1,4 @@
-# Dict Objectify
+# Dict Objectify [![PyPI](https://img.shields.io/pypi/pyversions/dict-objectify.svg?style=plastic)](https://github.com/reljicd/dict-objectify)
 
 ## Introduction
 
@@ -23,6 +23,13 @@ Mapping between dictionaries and these objects works both ways.
 This allows easy parsing of hierarchical documents into python object hierarchy,
 doing pre processing on dict values, doing any kind of processing on that hierarchy
 and then transforming root objects back into dictionaries for eventual dumping into same document formats. 
+
+## Installation
+
+To install with pip, run: `pip install dict-objectify`
+
+To install Python Fire from source, first clone the repository and then run:
+`python setup.py install`
 
 ## Basic Usage
 
@@ -148,3 +155,8 @@ It is possible to run all of the above with helper script:
 $> chmod +x scripts/run_docker.sh
 $> scripts/run_docker.sh -m pytest tests
 ```
+
+## License
+
+Licensed under the
+[Apache 2.0](https://github.com/google/python-fire/blob/master/LICENSE) License.
